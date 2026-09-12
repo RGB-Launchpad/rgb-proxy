@@ -1,0 +1,37 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "rgb-proxy",
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-01",
+  "observability": { "enabled": true },
+
+  // Custom domain. NOTE: a first-level subdomain. Universal SSL covers example.com and
+  // *.example.com, so a two-level name such as proxy.rgb.example.com gets no free certificate.
+  //
+  // 🚨 This hostname is written into every invoice your users issue (the endpoint field).
+  //    Changing it invalidates every invoice still outstanding.
+  "routes": [
+    { "pattern": "proxy.example.com", "custom_domain": true }
+  ],
+
+  // Consignment files, content-addressed by sha256. R2 has no egress fees.
+  "r2_buckets": [
+    { "binding": "CONSIGNMENTS", "bucket_name": "rgb-proxy-consignments" }
+  ],
+
+  // txid / vout / ack metadata.
+  // 🚨 database_id identifies a database *within an account*: moving to another Cloudflare
+  //    account means changing this line, or the deploy succeeds and the running Worker
+  //    reports a missing database.
+  "d1_databases": [
+    { "binding": "DB", "database_name": "rgb-proxy", "database_id": "<your-d1-database-id>" }
+  ],
+
+  // Expire consignments once a day. The reference implementation never deletes them.
+  "triggers": { "crons": ["0 3 * * *"] },
+
+  "vars": {
+    // How long a consignment is kept. See the privacy note in README.md.
+    "CONSIGNMENT_TTL_DAYS": "30"
+  }
+}

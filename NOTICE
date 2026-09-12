@@ -1,0 +1,9 @@
+RGB Proxy (Cloudflare Worker)
+Copyright 2026 RGB Launchpad
+
+Licensed under the Apache License, Version 2.0. See LICENSE.
+
+This implements the rgb-http-json-rpc v0.2 protocol, whose reference implementation is
+rgb-proxy-server (https://github.com/RGB-Tools/rgb-proxy-server). No code from it is
+included here; the error codes and response shapes are matched deliberately so that the
+two are interchangeable for a client.

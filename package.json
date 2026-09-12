@@ -1,0 +1,15 @@
+{
+  "name": "rgb-proxy",
+  "version": "0.1.0",
+  "description": "An rgb-http-json-rpc v0.2 proxy, running on Cloudflare Workers, R2 and D1",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --local",
+    "deploy": "wrangler deploy",
+    "test": "node test/conformance.mjs"
+  },
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "wrangler": "^4.129.0"
+  }
+}
