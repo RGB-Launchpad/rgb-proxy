@@ -1,5 +1,7 @@
 node_modules/
 .wrangler/
 .dev.vars
+# Deployment-specific copy of wrangler.jsonc (real database_id and domain)
+wrangler.local.jsonc
 
 .DS_Store

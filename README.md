@@ -43,6 +43,10 @@ npx wrangler d1 execute rgb-proxy --remote --file=schema.sql
 npx wrangler deploy
 ```
 
+To keep your account's values out of version control, copy `wrangler.jsonc` to
+`wrangler.local.jsonc` (ignored by git), fill in the real values there, and deploy with
+`npx wrangler deploy -c wrangler.local.jsonc`.
+
 Then point a wallet at it. In an RGB invoice the endpoint is written as
 `rpc://your-proxy.example.com/json-rpc`.
 
