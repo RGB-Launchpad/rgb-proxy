@@ -5,3 +5,12 @@ node_modules/
 wrangler.local.jsonc
 
 .DS_Store
+
+# Keys, credentials, logs
+*.key
+*.pem
+.cookie
+*.cookie
+*.log
+logs/
+.DS_Store
